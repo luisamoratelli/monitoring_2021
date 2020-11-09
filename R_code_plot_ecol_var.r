@@ -53,4 +53,42 @@ pairs(meuse)
 
 # question: imagine to do the pairs but pairing only the elements part of the dataset
 # how to do that only with cadmium, copper, lead and zinc
+# you can find this in #lecture #2
+
+#####################################
+
+# Lecture #2 ib ecological variables
+# recall the package sp, recall the dataset meuse 
+library(sp)
+data(meuse)
+
+pairs(meuse)
+
+head(meuse)
+
+#pairs with soil varibales (not all dataset)
+#the numbers of the columns are 1,2,3,4,5,6
+# from column 3 to column 6
+# we want to make pairs, and explain to r that we want just some of the columns 
+# the : means from 3 to 6; the , means start from column 3 
 pairs(meuse[,3:6])
+
+#let's use the names of the columns:
+# equals in r is tilde: done by Alt + fn + 126 
+pairs(~cadmium + copper + lead + zinc, data=meuse)
+
+# we can change something in the graph.
+# exercise: just use cadmium, lead and zinc
+pairs(~cadmium + lead + zinc, data=meuse)
+
+# exercise: change the color. colors have to stay in brackets
+pairs(~cadmium + copper + lead + zinc, data=meuse, col="red")
+
+# change colors of single panels by the function par()
+
+# exercise: change the symbol to filled triangles
+pairs(~cadmium + copper + lead + zinc, data=meuse, col="red", pch=17)
+
+# exercise: increase the size of the triangles 
+pairs(~cadmium + copper + lead + zinc, data=meuse, col="red", pch=17, cex=3)
+
