@@ -1,4 +1,3 @@
-
 # see the spatial component of the different elements spread in space
 # we are going to use the x and y components from the tables of last time
 # R spatial 
@@ -47,3 +46,48 @@ bubble(meuse,"lead")
 # to change the color ofthe graph
 bubble(meuse,"lead",col="red")
 
+# lecture 2
+# installing the ggplot2 package
+install.packages("ggplot2")
+
+# we don't use the brackets now because the package is inside r now
+library(ggplot)
+
+# ecological dataframe
+# biofuels
+# invent a variable about biofuels and some data. we build a new set and assigned the set to the name biofuels. c is an array of values 
+biofuels <- c(120, 200, 350, 570, 750)
+# oxydative enzimes 
+oxydative <- c(1200, 1200, 21000, 34000, 50000)
+# construct the table
+d <- data.frame(biofuels,oxydative)
+d
+# it is the same to do data.frame(biofuels,oxydative)
+
+# aes mean aesthetics, it is related to the variable that we are going to plot, so first biofuels (x=biofuels) and the oxydative (y=oxydative)
+ggplot(d, aes (x = biofuels, y = oxydative))
+
+# we will see we will see a blank plot so we have to decide the colors and shapes of the points (the geometry)
+# function geom_point() does  not need aggregates inside 
+ggplot(d, aes (x = biofuels, y = oxydative)) + geom_point()
+# the graph wee se how the two variables are related to each other
+
+# we can add changes to the point 
+ggplot(d, aes (x = biofuels, y = oxydative)) + geom_point(col = "red", size = 3)
+
+# can also have lines instead of points. it shows the trend of the data
+ggplot(d, aes (x = biofuels, y = oxydative)) + geom_line()
+
+# we can also put points + lines
+ggplot(d, aes (x = biofuels, y = oxydative)) + geom_point() + geom_line()
+#ggplot allows to put together different things
+
+#we can use polygons instead of lines and points thanks to geom_polygon()
+ggplot(d, aes (x = biofuels, y = oxydative)) + geom_polygon()
+
+########### we are going to import data from an external source
+
+# we have to create  a folder for the lab
+# to set the working directory
+# from r to the folder we have to use the brackets since we are going outside r
+setwd("C:/Users/ASUS/Desktop/università bologna/lezioni/Monitoring ecosystems and functioning/lab") 
