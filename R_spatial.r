@@ -91,3 +91,29 @@ ggplot(d, aes (x = biofuels, y = oxydative)) + geom_polygon()
 # to set the working directory
 # from r to the folder we have to use the brackets since we are going outside r
 setwd("C:/Users/ASUS/Desktop/università bologna/lezioni/Monitoring ecosystems and functioning/lab") 
+
+
+########### lecture 3 
+# I had tu put the lab directory in a shorter path
+# setwd = set working directory
+setwd("C:/lab/") 
+
+# we are going to read a table -> agg means aggregate of the covid data. we have data for each country. 
+# header means the table has the name of the variables inside -> we are explaining to R that the first row is the name of the variables (TRUE). if it is FALSE it means that the data start without the name of the columns 
+covid <- read.table("covid_agg.csv", header=TRUE)
+covid
+head(covid)
+
+#to have the data for univariate statistics (a summary for all the data)
+summary(covid)
+
+# ggplot2. the X is the longitude, the Y is the latitude (lon and lat)
+# if you put names you only have the name of the variables
+names(covid)
+
+# we have to explain to R that we want to use the library ggplot2
+library(ggplot2)
+ggplot(covid, aes (x = lon, y = lat)) + geom_point()
+
+# there is one point per country, we are changin the size of the points based on the number of cases. In aes we can explain this.
+ggplot(covid, aes (x = lon, y = lat, size = cases)) + geom_point()
