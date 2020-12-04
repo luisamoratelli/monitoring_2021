@@ -139,4 +139,63 @@ points(leo_ppp)
 # save the work space 
 
 
+##### lecture 5
+setwd("C:/lab/")
 
+load("point_pattern_analysis.RData")
+
+ls()
+library(spatstat)
+attach(leo) 
+
+# explaining the variables we want to use. we are going to use the function to put the data on chlorofile in the water 
+marks(leo_ppp) <- chlh
+
+ # when we use smooth we create a function of the chlorofile map
+chlh_map <- Smooth(leo_ppp)
+plot(chlh_map)
+points(leo_ppp)
+
+# we can use another palette because it is too blue
+cl <- colorRampPalette(c('yellow','orange','red','green'))(100) # 
+plot(chlh_map, col=cl)
+points(leo_ppp)
+ # we see that the pattern shows that there is no chlorofile in the western part
+
+# do the same for chls in the sediment
+marks(leo_ppp) <- chls
+chls_map <- Smooth(leo_ppp)
+# we receive an error saying sigma is too small that means we don't have enough points
+plot(chls_map, col=cl)
+points(leo_ppp)
+
+# we use the function par then use multiframe (several graphs all together). In our case we put chlorophille maps and density map
+# multipanel
+par(mfrow=c(1,3))
+
+# the first graph is the density map
+plot(density_map, col=cl)
+points(leo_ppp)
+
+# second graph chlorophille in the water 
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+# third graph 
+plot(chls_map, col=cl)
+points(leo_ppp)
+
+# exercise: build a multipanel with 3 rows and 1 column
+par(mfrow=c(3,1))
+plot(density_map, col=cl)
+points(leo_ppp)
+
+# second graph chlorophille in the water 
+plot(chlh_map, col=cl)
+points(leo_ppp)
+
+# third graph 
+plot(chls_map, col=cl)
+points(leo_ppp)
+# i just had to change 1,3 with 3,1: first is the rows, second is the columns
+# save workspace 
