@@ -33,3 +33,25 @@ plot(p224r63_2011$B2_sre, col=clg)
 # now the same with band 3
 clr <- colorRampPalette(c('dark red', 'red', 'pink'))(100)#
 plot(p224r63_2011$B3_sre, col=clr)
+
+# exercise to change color of the fourth band
+clo <- colorRampPalette(c('red', 'orange', 'yellow'))(100)#
+plot(p224r63_2011$B4_sre, col=clo)
+
+# the bands are actually one on top of each other
+# we tell R what is the image. we also have to stretch to better see the image
+# before we have to cacnel the previous graph 
+dev.off()
+plotRGB(p224r63_2011, r = 3, g = 2, b = 1, stretch = "Lin")
+
+# we did not use also band 4 because we are using just 3 with this function
+plotRGB(p224r63_2011, r = 4, g = 3, b = 2, stretch = "Lin")
+# in this way we will see the infrared region
+
+# now to see ifnrared in green and soil in violet 
+plotRGB(p224r63_2011, r=3, g=4, b=2, stretch="Lin")
+
+# we can switch again 
+plotRGB(p224r63_2011, r=3, g=2, b=4, stretch="Lin")
+
+# so the first code let us see how the human eye sees, the other is what satellites help us to see when our sight cannot go
