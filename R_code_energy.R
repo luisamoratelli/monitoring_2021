@@ -1,26 +1,29 @@
 # 15/01
+# we will analyze reflectance of near-inrared and absorption of red
 
 install.packages("rasterdiv")
 library(rasterdiv)
 
+# load data of copernicus
 data(copNDVI)
 
 # we will have a sketch of the Copernicus NDVI, we have to remove the blue part 
 plot(copNDVI)
 
-# the amount of biomass can go to 0-100 or 0-255 (8bit)
+# the amount of biomass can go to 0-100 or 0-255 (8bit). 
 # we will reclassify the values removing from 253 to 255, to clean the brown and blue part
 copNDVI <- reclassify(copNDVI, cbind(253:255, NA))
 plot(copNDVI)
 
-#the map we see is the map of biomes (different energy, biomass)
+#the map we see is the map of biomes (different energy, biomass). the greener the higher the biomass
 
-#install the rastervis package
+#install the rastervis package -> it does a mean of every level of raster (every mean a point)
 install.packages("rasterVis")
 library(rasterVis)
 
 levelplot(copNDVI)
 
+# we don't want the yellow becayse it has maximum impact on our eyes
 clymin <- colorRampPalette(c('yellow','red','blue'))(100) #
 plot(copNDVI, col=clymin)
 
