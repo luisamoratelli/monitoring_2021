@@ -18,17 +18,18 @@ install.packages("rasterdiv")
 library(rasterdiv)
 
 # download the data again!!!!!!!!!!!!!
-tempjan17 <- raster("c_gls_LST10-DC_201701110000_GLOBE_GEO_V1.2.1.nc")
-plot(tempjan17)
+ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
+plot(ndvibvaia)
+# zoom trentino
 
-tempjan21 <- raster("c_gls_LST10-DC_202101010000_GLOBE_GEO_V1.2.1.nc")
-plot(tempjan21)
+ndviavaia <- raster("NDVIaftervaianovember2018.nc")
+plot(ndviavaia)
 
 # change the colors
 # let's see both the plots 
 
 # let's see the difference in temperature between these years
-diftemp <- tempjan21 - tempjan17
+difndvi <- ndviavaia - ndvibvaia
 
 # do the same thing with vegetation and/or water
 
