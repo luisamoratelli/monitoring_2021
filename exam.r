@@ -20,7 +20,10 @@ library(rasterdiv)
 # download the data again!!!!!!!!!!!!!
 ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 plot(ndvibvaia)
+
 # zoom trentino
+ext <- c(15, 20, 43, 46)
+zoom(ndvibvaia_crop18, ext=ext)
 
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
 plot(ndviavaia)
