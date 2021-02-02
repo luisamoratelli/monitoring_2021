@@ -17,6 +17,19 @@ library(raster)
 install.packages("rasterdiv")
 library(rasterdiv)
 
+ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
+ndviavaia <- raster("NDVIaftervaianovember2018.nc")
+ext <- c(11,13,46,47)
+ndvibvaia <- crop(ndvibvaia, ext)
+ndvibvaia <- crop(ndviavaia, ext)
+
+plot(ndvibvaia)
+plot(ndviavaia)
+
+dif <- ndvibvaia - ndviavaia
+
+cl <- colorRampPalette(c('red','white','grey'))(100)
+
 # download the data again!!!!!!!!!!!!!
 ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 plot(ndvibvaia)
