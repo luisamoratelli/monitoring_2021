@@ -26,7 +26,7 @@ clymax <- colorRampPalette(c('blue','red','yellow'))(100)
 plot(ndvibvaia_crop18, col=clymax)
 
 # zoom trentino
-ext <- c(15, 20, 43, 46)
+ext <- c(11,13,46,47)
 zoom(ndvibvaia_crop18, ext=ext)
 
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
