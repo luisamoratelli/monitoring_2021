@@ -21,6 +21,10 @@ library(rasterdiv)
 ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 plot(ndvibvaia)
 
+#change colors e poi zoom bisogna levare sta merda di giallo
+clymax <- colorRampPalette(c('blue','red','yellow'))(100)
+plot(ndvibvaia_crop18, col=clymax)
+
 # zoom trentino
 ext <- c(15, 20, 43, 46)
 zoom(ndvibvaia_crop18, ext=ext)
