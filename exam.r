@@ -53,10 +53,8 @@ plot(ndviavaia, col=cl, main="NDVI november 2018 after Vaia
 difndvi_bavaia <- ndvibvaia - ndviavaia
 plot(difndvi_bavaia, col= cl)
 
-# let's see the difference in temperature between these years
-difndvi <- ndviavaia - ndvibvaia
 
-# let's do the same analysis but with soil water index
+# let's do the same analysis but with surface temperature
 t2018 <- raster("temperatureseptember2018.nc")
 t2019 <- raster("temperatureseptember2019.nc")
 
@@ -86,36 +84,38 @@ dif_t <- t2019 - t2018
 plot(dif_t, col= cl)
 
 # NVI year distance
-ndvibvaia <- raster("NDVIseptember2018.nc")
-ndviavaia <- raster("NDVIseptember2019.nc")
+ndvi2018 <- raster("NDVIseptember2018.nc")
+ndvi2019 <- raster("NDVIseptember2019.nc")
 
 # I am cropping on Trentino-Alto Adige
 ext <- c(5,13,44,49)
-ndvibvaia <- crop(ndvibvaia, ext)
-ndviavaia <- crop(ndviavaia, ext)
+ndvi2018 <- crop(ndvi2018, ext)
+ndvi2019 <- crop(ndvi2019, ext)
 
 # I am plotting the cropped maps 
-zoom(ndvibvaia, ext=ext)
+zoom(ndvi2018, ext=ext)
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndvibvaia)
-zoom(ndviavaia, ext=ext)
+plot(ndvi2018)
+zoom(ndvi2019, ext=ext)
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndviavaia)
+plot(ndvi2019)
 
 # I want to change the color of the plot to see better the difference
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
-plot(ndvibvaia, col=cl,main="NDVI october 2018 before Vaia")
-plot(ndviavaia, col=cl, main="NDVI november 2018 after Vaia
+plot(ndvi2018, col=cl,main="NDVI september 2018")
+plot(ndvi2019, col=cl, main="NDVI september 2019")
 
 # now I want to see the difference between the two periods
-difndvi_bavaia <- ndvibvaia - ndviavaia
-plot(difndvi_bavaia, col= cl)
+difndvi_1819 <- ndvibvaia - ndviavaia
+plot(difndvi_1819, col= cl)
 
 # let's see the difference in temperature between these years
-difndvi <- ndviavaia - ndvibvaia
+difndvi_1819 <- ndvi2019-ndvi2018
+
+
 
 
 
