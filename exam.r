@@ -34,15 +34,13 @@ ndvibvaia <- crop(ndvibvaia, ext)
 ndviavaia <- crop(ndviavaia, ext)
 
 # I am plotting the cropped maps 
-zoom(ndvibvaia, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndvibvaia)
-zoom(ndviavaia, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndviavaia)
-
 # I want to change the color of the plot to see better the difference
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
+#I want to see and plot (vefore the storm)
+plot(ndvibvaia)
+# I want to see and plot (after the storm)
+plot(ndviavaia)
+
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
@@ -54,7 +52,7 @@ difndvi_bavaia <- ndvibvaia - ndviavaia
 plot(difndvi_bavaia, col= cl)
 
 
-# let's do the same analysis but with surface temperature
+### let's do the same analysis but with surface temperature
 t2018 <- raster("temperatureseptember2018.nc")
 t2019 <- raster("temperatureseptember2019.nc")
 
@@ -63,16 +61,14 @@ ext <- c(5,13,44,49)
 t2018 <- crop(t2018, ext)
 t2019 <- crop(t2019, ext)
 
-# I am plotting the cropped maps 
-zoom(t2018, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(t2018)
-zoom(t2019, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(t2019)
-
+# I am plotting the cropped maps
 # I want to change the color of the plot to see better the difference
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I want to see the plot (temperautre in september 2018)
+plot(t2018)
+# I want to see the plot (temperautre in september 2019)
+plot(t2019)
+
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
@@ -83,7 +79,7 @@ plot(t2019, col=cl, main="temperature september 2019")
 dif_t <- t2019 - t2018
 plot(dif_t, col= cl)
 
-# NVI year distance
+### NDVI 1 year distance
 ndvi2018 <- raster("NDVIseptember2018.nc")
 ndvi2019 <- raster("NDVIseptember2019.nc")
 
@@ -93,15 +89,13 @@ ndvi2018 <- crop(ndvi2018, ext)
 ndvi2019 <- crop(ndvi2019, ext)
 
 # I am plotting the cropped maps 
-zoom(ndvi2018, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndvi2018)
-zoom(ndvi2019, ext=ext)
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndvi2019)
-
 # I want to change the color of the plot to see better the difference
 cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I want to see the plot (ndvi in september 2018)
+plot(ndvi2018)
+# I want to see the plot (ndvi in september 2019)
+plot(ndvi2019)
+
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
@@ -109,12 +103,38 @@ plot(ndvi2018, col=cl,main="NDVI september 2018")
 plot(ndvi2019, col=cl, main="NDVI september 2019")
 
 # now I want to see the difference between the two periods
-difndvi_1819 <- ndvibvaia - ndviavaia
+difndvi_1819 <- ndvi2019 - ndvi2018
 plot(difndvi_1819, col= cl)
 
-# let's see the difference in temperature between these years
-difndvi_1819 <- ndvi2019-ndvi2018
+### fcover 1 year distance
+fcover2018 <- raster("fcvoerseptember2018.nc")
+fcover2019 <- raster("fcoverseptember2019.nc")
 
+# I am cropping on Trentino-Alto Adige
+ext <- c(5,13,47,49)
+fcover2018 <- crop(ndvi2018, ext)
+fcover2019 <- crop(ndvi2019, ext)
+
+# I am plotting the cropped maps 
+# I want to change the color of the plot to see better the difference
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I want to see the plot from september 2018
+plot(fcover2018)
+# I want to see the plot from september 2019
+plot(fcover2019)
+
+# I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
+par(mfrow=c(1,2))
+# I am having 1 row and two columns. Let's see the plot
+plot(fcover2018, col=cl,main="Fcover september 2018")
+plot(fcover2019, col=cl, main="Fcover september 2019")
+
+# now I want to see the difference between the two periods
+difcover_1819 <- fcover2019 - fcover2018
+plot(difcover_1819, col= cl)
+
+# let's see the difference in temperature between these years
+difcover_1819 <- fcover2019-fcover2018
 
 
 
