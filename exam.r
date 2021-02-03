@@ -29,12 +29,16 @@ ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
 
 # I am cropping on Trentino-Alto Adige
-ext <- c(10,13,46,49)
+ext <- c(5,13,44,49)
 ndvibvaia <- crop(ndvibvaia, ext)
 ndviavaia <- crop(ndviavaia, ext)
 
 # I am plotting the cropped maps 
+zoom(ndvibvaia, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
 plot(ndvibvaia)
+zoom(ndviavaia, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
 plot(ndviavaia)
 
 # I want to change the color of the plot to see better the difference
@@ -42,39 +46,88 @@ cl <- colorRampPalette(c('blue','red','yellow'))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
-plot(ndvibvaia, col=cl)
-plot(ndviavaia, col=cl)
-
+plot(ndvibvaia, col=cl,main="NDVI october 2018 before Vaia")
+plot(ndviavaia, col=cl, main="NDVI november 2018 after Vaia
 
 # now I want to see the difference between the two periods
-dif <- ndvibvaia - ndviavaia
-plot(dif, col= cl)
-
-
-# controllare qui sotto
-
-#change colors e poi zoom bisogna levare sta merda di giallo
-clymax <- colorRampPalette(c('blue','red','yellow'))(100)
-plot(ndvibvaia_crop18, col=clymax)
-
-# zoom trentino
-ext <- c(11,13,46,47)
-zoom(ndvibvaia_crop18, ext=ext)
-
-ndviavaia <- raster("NDVIaftervaianovember2018.nc")
-plot(ndviavaia)
-
-# change the colors
-# let's see both the plots 
+difndvi_bavaia <- ndvibvaia - ndviavaia
+plot(difndvi_bavaia, col= cl)
 
 # let's see the difference in temperature between these years
 difndvi <- ndviavaia - ndvibvaia
 
-# do the same thing with vegetation and/or water
+# let's do the same analysis but with soil water index
+t2018 <- raster("temperatureseptember2018.nc")
+t2019 <- raster("temperatureseptember2019.nc")
 
-# try to make a multivariate analysis or a point pattern 
+# I am cropping on Trentino-Alto Adige
+ext <- c(5,13,44,49)
+t2018 <- crop(t2018, ext)
+t2019 <- crop(t2019, ext)
 
-# histogram?
+# I am plotting the cropped maps 
+zoom(t2018, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+plot(t2018)
+zoom(t2019, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+plot(t2019)
+
+# I want to change the color of the plot to see better the difference
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
+par(mfrow=c(1,2))
+# I am having 1 row and two columns. Let's see the plot
+plot(t2018, col=cl, main="temperature september 2018")
+plot(t2019, col=cl, main="temperature september 2019")
+
+# I want to see the difference in temperature
+dif_t <- t2019 - t2018
+plot(dif_t, col= cl)
+
+# NVI year distance
+ndvibvaia <- raster("NDVIseptember2018.nc")
+ndviavaia <- raster("NDVIseptember2019.nc")
+
+# I am cropping on Trentino-Alto Adige
+ext <- c(5,13,44,49)
+ndvibvaia <- crop(ndvibvaia, ext)
+ndviavaia <- crop(ndviavaia, ext)
+
+# I am plotting the cropped maps 
+zoom(ndvibvaia, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+plot(ndvibvaia)
+zoom(ndviavaia, ext=ext)
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+plot(ndviavaia)
+
+# I want to change the color of the plot to see better the difference
+cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
+par(mfrow=c(1,2))
+# I am having 1 row and two columns. Let's see the plot
+plot(ndvibvaia, col=cl,main="NDVI october 2018 before Vaia")
+plot(ndviavaia, col=cl, main="NDVI november 2018 after Vaia
+
+# now I want to see the difference between the two periods
+difndvi_bavaia <- ndvibvaia - ndviavaia
+plot(difndvi_bavaia, col= cl)
+
+# let's see the difference in temperature between these years
+difndvi <- ndviavaia - ndvibvaia
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
