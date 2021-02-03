@@ -29,7 +29,7 @@ ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
 
 # I am cropping on Trentino-Alto Adige
-ext <- c(10,15,44,47)
+ext <- c(10,13,46,49)
 ndvibvaia <- crop(ndvibvaia, ext)
 ndviavaia <- crop(ndviavaia, ext)
 
