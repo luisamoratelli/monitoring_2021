@@ -21,10 +21,6 @@ library(RStoolbox)
 install.packages("raster")
 library(raster)
 
-# install rasterdiv
-install.packages("rasterdiv")
-library(rasterdiv)
-
 # set the working directory
 setwd("C:/lab/")
 
