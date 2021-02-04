@@ -67,10 +67,9 @@ t2019 <- crop(t2019, ext)
 
 # I am plotting the cropped maps one at a time
 # I want to see the plot (temperautre in september 2018)
-# I'm writing the title
+# I'm writing the title using main=""
 plot(t2018, main = "Temperature in September 2018")
 # I want to see the plot (temperautre in september 2019)
-# I'm writing the title
 plot(t2019, main = "Temperature in September 2019")
 
 # I want to change the color of the plot to see better the difference
@@ -148,6 +147,21 @@ plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 
 
 
 # aggiungere commenti su considerazioni dopo ogni plot
+# plot par con ndvi prima dopo 2018 2019 t 2018 2019 ndvi fcvoer 2018 2019 2 righe 4 colonne
+# plot par dif pria dopo, 2018.2019, t, fcover 2,2
+par(mfrow=c(2,1))
+plot(ndvibvaia, col=cl,main = "NDVI before Vaia october 2018")
+plot(ndviavaia, col=cl,main = "NDVI after Vaia november 2018")
+plot(t2018, col=cl,main = "Temperature in September 2018")
+plot(t2019, col=cl,main = "Temperature in September 2019")
+plot(ndvi2018, col=cl,main="NDVI september 2018")
+plot(ndvi2019, col=cl, main="NDVI september 2019")
+plot(fcover2018, col=cl,main="Fcover september 2018")
+plot(fcover2019, col=cl, main="Fcover september 2019")
+plot(difndvi_bavaia, col= cl, main = "Difference in NDVI between November and October 2018")
+plot(dif_t, col= cl, main = "Difference in temperature between September 2019 and September 2018")
+plot(difndvi_1819, col= cl, main = "Difference in NDVI between September 2019 and September 2018")
+plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 and September 2018")
 
 
 
