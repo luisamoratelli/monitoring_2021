@@ -123,7 +123,7 @@ plot(ndvi2019, col=cln, main="NDVI september 2019")
 dev.off()
 
 # now I want to see the difference between the two periods
-difndvi_1819 <- ndvi2019 - ndvi2018
+difndvi_1819 <- ndvi2018 - ndvi2019
 plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
 
 dev.off()
@@ -157,7 +157,7 @@ plot(fcover2019, col=clf, main="Fcover september 2019")
 dev.off()
 
 # now I want to see the difference between the two periods
-difcover_1819 <- fcover2019 - fcover2018
+difcover_1819 <- fcover2018 - fcover2019
 plot(difcover_1819, col= clf, main ="Difference in Fcover between September 2019 and September 2018")
 
 dev.off()
