@@ -147,7 +147,7 @@ difcover_1819 <- fcover2019 - fcover2018
 plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 and September 2018")
 
 
-
+# aggiungere commenti su considerazioni dopo ogni plot
 
 
 
