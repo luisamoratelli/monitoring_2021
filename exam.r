@@ -53,11 +53,14 @@ par(mfrow=c(1,2))
 plot(ndvibvaia, col=cln,main="NDVI October 2018 vefore Vaia")
 plot(ndviavaia, col=cln, main="NDVI November 2018 after Vaia")
 
+dev.off()
+
 # now I want to see the difference between the two periods
 difndvi_bavaia <- ndvibvaia - ndviavaia
 plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
 # there is not a big difference between the two periods. So I want to see if using a one year distance something changes in temperature and NDVI
 
+dev.off()
 
 ### let's do the same analysis but with surface temperature between September 2018 and 2019
 t2018 <- raster("temperatureseptember2018.nc")
@@ -83,12 +86,15 @@ par(mfrow=c(1,2))
 plot(t2018, col=clt, main="Temperature September 2018")
 plot(t2019, col=clt, main="Temperature September 2019")
 
+dev.off()
+
 # I want to see the difference in temperature
 dif_t <- t2019 - t2018
 plot(dif_t, col= clt, main = "Difference in temperature between September 2019 and September 2018")
 
 # There is a little increase in the temperature, but it is probably not caused by Vaia storm, but by other variables.
 
+dev.off()
 
 ### I want to see if there is NDVI difference between September 2019 and September 2018, so one month before the storm and almost a year after it.
 ndvi2018 <- raster("NDVIseptember2018.nc")
@@ -114,12 +120,15 @@ par(mfrow=c(1,2))
 plot(ndvi2018, col=cln,main="NDVI september 2018")
 plot(ndvi2019, col=cln, main="NDVI september 2019")
 
+dev.off()
+
 # now I want to see the difference between the two periods
 difndvi_1819 <- ndvi2019 - ndvi2018
 plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
 
-# let's see fcover
+dev.off()
 
+# let's see fcover
 ### Fcover 1 year distance: September 2018 and September 2019
 # Fcover is the fraction of fround covered by green vegetation 
 fcover2018 <- raster("fcvoerseptember2018.nc")
@@ -145,14 +154,15 @@ par(mfrow=c(1,2))
 plot(fcover2018, col=clf,main="Fcover september 2018")
 plot(fcover2019, col=clf, main="Fcover september 2019")
 
+dev.off()
+
 # now I want to see the difference between the two periods
 difcover_1819 <- fcover2019 - fcover2018
 plot(difcover_1819, col= clf, main ="Difference in Fcover between September 2019 and September 2018")
 
+dev.off()
 
-# aggiungere commenti su considerazioni dopo ogni plot
-# plot par con ndvi prima dopo 2018 2019 t 2018 2019 ndvi fcvoer 2018 2019 2 righe 4 colonne
-# plot par dif pria dopo, 2018.2019, t, fcover 2,2
+# plot with all the graphs together: 2 rows and 4 columns 
 par(mfrow=c(2,4))
 plot(ndvibvaia, col=cln,main = "NDVI before Vaia october 2018")
 plot(ndviavaia, col=cln,main = "NDVI after Vaia november 2018")
@@ -163,6 +173,12 @@ plot(ndvi2019, col=cln, main="NDVI september 2019")
 plot(fcover2018, col=clf,main="Fcover september 2018")
 plot(fcover2019, col=clf, main="Fcover september 2019")
 
+dev.off()
+
+# this plot is not really useful becuase the graphs are too little so I'm going to plot just the differences
+
+# plot with the differences in the parameters with 2 rows and two columns
+par(mfrow=c(2,2))
 plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
 plot(dif_t, col= clt, main = "Difference in temperature between September 2019 and September 2018")
 plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
