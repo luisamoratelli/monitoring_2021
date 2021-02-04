@@ -26,12 +26,14 @@ library(raster)
 # set the working directory
 setwd("C:/lab/")
 
+### First of all I want to analyse the difference in NDVI before and after the Vaia storm
+# The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes
 # I am going to use NDVI before and after Vaia.  I'm using "" because data are external to R
 ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
 
 # I'm going to plot just the cropped image on Trentino-Alto Adige since the data are heavy
-# I am cropping on Trentino-Alto Adige
+# I am cropping on Northern Italy, but I want to focus on Trentino-Alto Adige
 ext <- c(5,16,44,49)
 ndvibvaia <- crop(ndvibvaia, ext)
 ndviavaia <- crop(ndviavaia, ext)
@@ -44,23 +46,24 @@ plot(ndvibvaia, main = "NDVI before Vaia october 2018")
 plot(ndviavaia, main = "NDVI after Vaia november 2018")
 
 # I want to change the color of the plot to see better the difference
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
+cln <- colorRampPalette(c('red','gold','darkgoldenrod3',"cyan","cyan4","chartreuse1","darkgreen"))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and 2 columns. Let's see the plot
-plot(ndvibvaia, col=cl,main="NDVI October 2018 vefore Vaia")
-plot(ndviavaia, col=cl, main="NDVI November 2018 after Vaia")
+plot(ndvibvaia, col=cln,main="NDVI October 2018 vefore Vaia")
+plot(ndviavaia, col=cln, main="NDVI November 2018 after Vaia")
 
 # now I want to see the difference between the two periods
 difndvi_bavaia <- ndvibvaia - ndviavaia
-plot(difndvi_bavaia, col= cl, main = "Difference in NDVI between November and October 2018")
+plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
 # there is not a big difference between the two periods. So I want to see if using a one year distance something changes in temperature and NDVI
 
-### let's do the same analysis but with surface temperature
+
+### let's do the same analysis but with surface temperature between September 2018 and 2019
 t2018 <- raster("temperatureseptember2018.nc")
 t2019 <- raster("temperatureseptember2019.nc")
 
-# I am cropping on Trentino-Alto Adige before plotting 
+# I am cropping on Northern Italy, but I want to focus on Trentino-Alto Adige
 ext <- c(5,16,44,49)
 t2018 <- crop(t2018, ext)
 t2019 <- crop(t2019, ext)
@@ -73,16 +76,16 @@ plot(t2018, main = "Temperature in September 2018")
 plot(t2019, main = "Temperature in September 2019")
 
 # I want to change the color of the plot to see better the difference
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
+clt <- colorRampPalette(c("yellow2","goldenrod","darkred"))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
-plot(t2018, col=cl, main="Temperature September 2018")
-plot(t2019, col=cl, main="Temperature September 2019")
+plot(t2018, col=clt, main="Temperature September 2018")
+plot(t2019, col=clt, main="Temperature September 2019")
 
 # I want to see the difference in temperature
 dif_t <- t2019 - t2018
-plot(dif_t, col= cl, main = "Difference in temperature between September 2019 and September 2018")
+plot(dif_t, col= clt, main = "Difference in temperature between September 2019 and September 2018")
 
 # There is a little increase in the temperature, but it is probably not caused by Vaia storm, but by other variables.
 
@@ -91,7 +94,7 @@ plot(dif_t, col= cl, main = "Difference in temperature between September 2019 an
 ndvi2018 <- raster("NDVIseptember2018.nc")
 ndvi2019 <- raster("NDVIseptember2019.nc")
 
-# I am cropping on Trentino-Alto Adige
+# I am cropping on Northern Italy, but I want to focus on Trentino-Alto Adige
 ext <- c(5,16,44,49)
 ndvi2018 <- crop(ndvi2018, ext)
 ndvi2019 <- crop(ndvi2019, ext)
@@ -103,28 +106,29 @@ plot(ndvi2018, main = "NDVI September 2018")
 # I want to see the plot (ndvi in september 2019)
 plot(ndvi2019, main = "NDVI September 2019")
 
-# I want to change the color of the plot to see better the difference
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
+# I am going to use the same colorRampPalette that I used for the difference between before and after the storm
+cln <- colorRampPalette(c('red','gold','darkgoldenrod3',"cyan","cyan4","chartreuse1","darkgreen"))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
-plot(ndvi2018, col=cl,main="NDVI september 2018")
-plot(ndvi2019, col=cl, main="NDVI september 2019")
+plot(ndvi2018, col=cln,main="NDVI september 2018")
+plot(ndvi2019, col=cln, main="NDVI september 2019")
 
 # now I want to see the difference between the two periods
 difndvi_1819 <- ndvi2019 - ndvi2018
-plot(difndvi_1819, col= cl, main = "Difference in NDVI between September 2019 and September 2018")
+plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
 
 # let's see fcover
 
 ### Fcover 1 year distance: September 2018 and September 2019
+# Fcover is the fraction of fround covered by green vegetation 
 fcover2018 <- raster("fcvoerseptember2018.nc")
 fcover2019 <- raster("fcoverseptember2019.nc")
 
-# I am cropping on Trentino-Alto Adige
+# I am cropping on Northern Italy, but I want to focus on Trentino-Alto Adige
 ext <- c(5,16,44,49)
-fcover2018 <- crop(ndvi2018, ext)
-fcover2019 <- crop(ndvi2019, ext)
+fcover2018 <- crop(fcover2018, ext)
+fcover2019 <- crop(fcover2019, ext)
 
 # I am plotting the cropped maps 
 # I want to see the plot from september 2018
@@ -134,33 +138,34 @@ plot(fcover2018, main = "Fcover September 2018")
 plot(fcover2019, main = "Fcover September 2019")
 
 # I want to change the color of the plot to see better the difference
-cl <- colorRampPalette(c('blue','red','yellow'))(100)
+clf <- colorRampPalette(c('cornsilk1','blanchedalmond','darkgoldenrod3','palegreen1','green3','darkgreen'))(100)
 # I am using par function to have multiple graphs in a single plot (mfrow stays for multiframe rows) 
 par(mfrow=c(1,2))
 # I am having 1 row and two columns. Let's see the plot
-plot(fcover2018, col=cl,main="Fcover september 2018")
-plot(fcover2019, col=cl, main="Fcover september 2019")
+plot(fcover2018, col=clf,main="Fcover september 2018")
+plot(fcover2019, col=clf, main="Fcover september 2019")
 
 # now I want to see the difference between the two periods
 difcover_1819 <- fcover2019 - fcover2018
-plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 and September 2018")
+plot(difcover_1819, col= clf, main ="Difference in Fcover between September 2019 and September 2018")
 
 
 # aggiungere commenti su considerazioni dopo ogni plot
 # plot par con ndvi prima dopo 2018 2019 t 2018 2019 ndvi fcvoer 2018 2019 2 righe 4 colonne
 # plot par dif pria dopo, 2018.2019, t, fcover 2,2
-par(mfrow=c(2,1))
-plot(ndvibvaia, col=cl,main = "NDVI before Vaia october 2018")
-plot(ndviavaia, col=cl,main = "NDVI after Vaia november 2018")
-plot(t2018, col=cl,main = "Temperature in September 2018")
-plot(t2019, col=cl,main = "Temperature in September 2019")
-plot(ndvi2018, col=cl,main="NDVI september 2018")
-plot(ndvi2019, col=cl, main="NDVI september 2019")
-plot(fcover2018, col=cl,main="Fcover september 2018")
-plot(fcover2019, col=cl, main="Fcover september 2019")
-plot(difndvi_bavaia, col= cl, main = "Difference in NDVI between November and October 2018")
-plot(dif_t, col= cl, main = "Difference in temperature between September 2019 and September 2018")
-plot(difndvi_1819, col= cl, main = "Difference in NDVI between September 2019 and September 2018")
+par(mfrow=c(2,4))
+plot(ndvibvaia, col=cln,main = "NDVI before Vaia october 2018")
+plot(ndviavaia, col=cln,main = "NDVI after Vaia november 2018")
+plot(t2018, col=clt,main = "Temperature in September 2018")
+plot(t2019, col=clt,main = "Temperature in September 2019")
+plot(ndvi2018, col=cln,main="NDVI september 2018")
+plot(ndvi2019, col=cln, main="NDVI september 2019")
+plot(fcover2018, col=clf,main="Fcover september 2018")
+plot(fcover2019, col=clf, main="Fcover september 2019")
+
+plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
+plot(dif_t, col= clt, main = "Difference in temperature between September 2019 and September 2018")
+plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
 plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 and September 2018")
 
 
