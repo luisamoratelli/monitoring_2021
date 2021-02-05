@@ -124,7 +124,7 @@ dev.off()
 
 # now I want to see the difference between the two periods
 difndvi_1819 <- ndvi2018 - ndvi2019
-plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
+plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2018 and September 2019")
 
 dev.off()
 
