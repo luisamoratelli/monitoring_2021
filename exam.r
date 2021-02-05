@@ -2,9 +2,9 @@
 
 # I took the data from copernicus
 # NDVI for october 2018, november 2018 (first analysis)
-# Soil water index for september 2018 and september 2019 (second analysis)
+# Land surface temperature for september 2018 and september 2019 (second analysis)
 # NDVI for september 2018 and september 2019 (third analysis)
-# Land surface temperature for september 2018 and september 2019 (fourth analysis)
+# Fcover for september 2018 and september 2019 (fourth analysis)
 # The analysis is made for Trentino-Alto Adige
 
 # to read the copernicus data I have to install a package and I use "" to let R know that the data is external to the program 
@@ -28,7 +28,7 @@ setwd("C:/lab/")
 
 ### First of all I want to analyse the difference in NDVI before and after the Vaia storm
 # The Normalized Difference Vegetation Index (NDVI) is an indicator of the greenness of the biomes
-# I am going to use NDVI before and after Vaia.  I'm using "" because data are external to R
+# I am going to use NDVI before and after Vaia.  I'm using "" because data are external to R and I need to import them
 ndvibvaia <- raster("NDVIbeforevaiaoctober2018.nc")
 ndviavaia <- raster("NDVIaftervaianovember2018.nc")
 
@@ -196,7 +196,7 @@ dev.off()
 
 # let's see fcover
 ### Fcover 1 year distance: September 2018 and September 2019
-# Fcover is the fraction of fround covered by green vegetation 
+# Fcover is the fraction of ground covered by green vegetation 
 fcover2018 <- raster("fcvoerseptember2018.nc")
 fcover2019 <- raster("fcoverseptember2019.nc")
 
