@@ -182,7 +182,7 @@ par(mfrow=c(2,2))
 plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
 plot(dif_t, col= clt, main = "Difference in temperature between September 2019 and September 2018")
 plot(difndvi_1819, col= cln, main = "Difference in NDVI between September 2019 and September 2018")
-plot(difcover_1819, col= cl, main ="Difference in Fcover between September 2019 and September 2018")
+plot(difcover_1819, col= cln, main ="Difference in Fcover between September 2019 and September 2018")
 
 
 
