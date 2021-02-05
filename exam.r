@@ -45,10 +45,10 @@ plot(ndvibvaia, main = "NDVI before Vaia october 2018")
 
 # save the plot in png
 png("NDVI before Vaia.png")
-plot(ndviafter, main="NDVI before Vaia") 
+plot(ndvibvaia, main="NDVI before Vaia October 2018") 
 
 # I want to see and plot (after the storm)
-plot(ndviavaia, main = "NDVI after Vaia november 2018")
+plot(ndviavaia, main = "NDVI after Vaia November 2018")
 
 # save the plot in png
 png("NDVI after Vaia.png")
@@ -66,7 +66,7 @@ plot(ndviavaia, col=cln, main="NDVI November 2018 after Vaia")
 png("NDVI before and after Vaia.png")
 cln <- colorRampPalette(c('red','gold','darkgoldenrod3',"cyan","cyan4","chartreuse1","darkgreen"))(100)
 par(mfrow=c(1,2))
-plot(ndvibvaia, col=cln,main="NDVI October 2018 vefore Vaia")
+plot(ndvibvaia, col=cln,main="NDVI October 2018 before Vaia")
 plot(ndviavaia, col=cln, main="NDVI November 2018 after Vaia")
 
 dev.off()
@@ -77,7 +77,7 @@ plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and O
 # there is not a big difference between the two periods. So I want to see if using a one year distance something changes in temperature and NDVI
 
 # save the plot in png
-png("Difference NDVI before and after Vaia.png")
+png("Difference in NDVI before and after Vaia.png")
 cln <- colorRampPalette(c('red','gold','darkgoldenrod3',"cyan","cyan4","chartreuse1","darkgreen"))(100)
 plot(difndvi_bavaia, col= cln, main = "Difference in NDVI between November and October 2018")
 
@@ -218,7 +218,7 @@ plot(fcover2018, main = "Fcover September 2018")
 plot(fcover2019, main = "Fcover September 2019")
 
 # save the plot in png
-png("Fcover 2018.png")
+png("Fcover 2019.png")
 plot(fcover2019, main = "Fcover September 2019")
 
 # I want to change the color of the plot to see better the difference
