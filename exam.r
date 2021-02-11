@@ -1,4 +1,4 @@
-### EXAM PROJECT: NDVI before and after Vaia storm 26-26 october 2018, NDVI september 2018, 2019, soil water index before and after Vaia storm, land surface temperature september 2018,2019
+### EXAM PROJECT: NDVI before and after Vaia storm 26-26 october 2018, NDVI september 2018, 2019, Fcover before and after Vaia storm (September 2018 and 2019), land surface temperature september 2018,2019
 
 # I took the data from copernicus
 # NDVI for october 2018, november 2018 (first analysis)
